@@ -30,7 +30,7 @@ bool Dialog::createConnection()
 
     QSqlDatabase passwordmanager = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
 
-    passwordmanager.setDatabaseName("D:/S5IT/Lock-Up/Db/pwmanager.db");
+    passwordmanager.setDatabaseName("Db/passwordwmanager.sqlite");
 
     if(!passwordmanager.open())
     {
