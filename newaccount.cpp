@@ -35,6 +35,16 @@ void NewAccount::on_RegisterButton_clicked()
 
            connect(ui->ConfirmPasswordBox, SIGNAL(returnPressed()),ui->RegisterButton,SLOT(click()));
            ui->re_confirm->setText(""); //Set label back to empty
+
+           //Hash the password
+           QByteArray password_hashkey ;
+           password_hashkey.append(New_password);
+           QCryptographicHash passwordHasher(QCryptographicHash::Sha1);
+           passwordHasher.addData(password_hashkey);
+
+           QByteArray hash_key_result = passwordHasher.result();
+           qDebug()<< hash_key_result;
+
        }
        else
        {

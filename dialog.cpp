@@ -26,19 +26,17 @@ Dialog::~Dialog()
     delete ui;
 }
 
-QSqlDatabase db ;
-
 bool Dialog::createConnection()
 {
 
-    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    QSqlDatabase passwordmanager = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
     QString path = QDir::currentPath();
 
     //Setting the relative path
-    db.setDatabaseName("../Db/passwordwmanager.sqlite");
-    if(!db.open())
+    passwordmanager.setDatabaseName("../Db/passwordwmanager.sqlite");
+    if(!passwordmanager.open())
          {
-             QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
+             QMessageBox::information(0, "Connection Failed!", passwordmanager.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
          }
     else
         qDebug ()<<"Connected!"; // TEST
@@ -59,7 +57,7 @@ void Dialog::on_LogInButton_clicked()
         QSqlDatabase db = QSqlDatabase::database("passwordmanager");
         db.open();
         QSqlQuery qry(db);
-        qDebug()<<qry.exec("SELECT Username,MasterPassword FROM pwmanager");
+        qDebug()<<qry.exec("INSERT INTO pwmanager (M_ID,Username,MasterPassword) VALUES(:val1,:val2,:val3)");
         }
 }
 
