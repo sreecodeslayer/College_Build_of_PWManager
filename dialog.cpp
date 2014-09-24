@@ -6,6 +6,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QDir>
 
 
 QString password;
@@ -25,22 +26,22 @@ Dialog::~Dialog()
     delete ui;
 }
 
+QSqlDatabase db ;
+
 bool Dialog::createConnection()
 {
 
-    QSqlDatabase passwordmanager = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    QString path = QDir::currentPath();
 
-    passwordmanager.setDatabaseName("Db/passwordwmanager.sqlite");
-
-    if(!passwordmanager.open())
-    {
-        passwordmanager.setDatabaseName("D:/S5IT/Lock-Up/Db/pwmanager.db");
-
-         if(!passwordmanager.open())
+    //Setting the relative path
+    db.setDatabaseName("../Db/passwordwmanager.sqlite");
+    if(!db.open())
          {
-             QMessageBox::information(0, "Connection Failed!", passwordmanager.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
+             QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
          }
-    }
+    else
+        qDebug ()<<"Connected!"; // TEST
     return true;
 }
 
@@ -48,16 +49,18 @@ bool Dialog::createConnection()
 
 void Dialog::on_LogInButton_clicked()
 {
-    //Log in check and Log in
-    username = ui->UsernameBox->text();
-    password = ui->PasswordBox->text();
+    if(createConnection())
+        {
+        //Log in check and Log in
+        username = ui->UsernameBox->text();
+        password = ui->PasswordBox->text();
 
-    //Database Check for username and password
-    QSqlDatabase db = QSqlDatabase::database("passwordmanager");
-    db.open();
-    QSqlQuery qry(db);
-    qDebug()<<qry.exec("SELECT Username,MasterPassword FROM pwmanager");
-
+        //Database Check for username and password
+        QSqlDatabase db = QSqlDatabase::database("passwordmanager");
+        db.open();
+        QSqlQuery qry(db);
+        qDebug()<<qry.exec("SELECT Username,MasterPassword FROM pwmanager");
+        }
 }
 
 void Dialog::on_NewAccountButton_clicked()

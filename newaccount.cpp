@@ -4,11 +4,11 @@
 #include <QDebug>
 #include <QLabel>
 #include <QMessageBox>
+#include <QCryptographicHash>
 
 QString New_username;
 QString New_password;
 QString Confirm_password;
-
 
 NewAccount::NewAccount(QWidget *parent) :
     QDialog(parent),
