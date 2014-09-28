@@ -6,6 +6,8 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQuery>
+#include <QDir>
+#include <QCryptographicHash>
 
 
 QString password;
@@ -25,38 +27,54 @@ Dialog::~Dialog()
     delete ui;
 }
 
+QSqlDatabase db=QSqlDatabase::database("passwordmanager");
 bool Dialog::createConnection()
 {
 
-    QSqlDatabase passwordmanager = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    QString path = QDir::currentPath();
 
-    passwordmanager.setDatabaseName("D:/S5IT/Lock-Up/Db/pwmanager.db");
-
-    if(!passwordmanager.open())
-    {
-        passwordmanager.setDatabaseName("D:/S5IT/Lock-Up/Db/pwmanager.db");
-
-         if(!passwordmanager.open())
+    //Setting the relative path
+    db.setDatabaseName("../College_Build_of_PWManager/Db/passwordmanager.sqlite");
+    if(!db.open())
          {
-             QMessageBox::information(0, "Connection Failed!", passwordmanager.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
+             QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
          }
-    }
+    else
+        qDebug ()<<"Connected!"; // TEST
     return true;
 }
 
 
-
 void Dialog::on_LogInButton_clicked()
 {
-    //Log in check and Log in
-    username = ui->UsernameBox->text();
-    password = ui->PasswordBox->text();
+        //Log in check and Log in
+        username = ui->UsernameBox->text();
+        password = ui->PasswordBox->text();
 
-    //Database Check for username and password
-    QSqlDatabase db = QSqlDatabase::database("passwordmanager");
-    db.open();
-    QSqlQuery qry(db);
-    qDebug()<<qry.exec("SELECT Username,MasterPassword FROM pwmanager");
+        //Hash the password and compare from table
+        QByteArray password_hashkey ;
+        password_hashkey.append(password);
+        QCryptographicHash passwordHasher(QCryptographicHash::Sha1);
+        passwordHasher.addData(password_hashkey);
+        QByteArray hash_key_result = passwordHasher.result();
+        qDebug()<< "Dialog-, log in button clicked" + hash_key_result;
+
+        QSqlQuery Log_in_query(db);
+        QString output_hashedpassword,output_username, query = "SELECT Username,MasterPassword FROM pwmanager";
+
+        Log_in_query.exec(query);
+        while(Log_in_query.next())
+        {
+            output_username = Log_in_query.value(0).toString();
+            output_hashedpassword = Log_in_query.value(1).toString();
+        }
+
+
+
+
+
+
 
 }
 
@@ -64,6 +82,7 @@ void Dialog::on_NewAccountButton_clicked()
 {
     NewAccount *dialog=new NewAccount();
     dialog->setWindowTitle("Register");
+    this->hide();
     dialog->show();
 }
 
