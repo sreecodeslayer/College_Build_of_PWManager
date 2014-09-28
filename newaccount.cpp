@@ -1,14 +1,20 @@
 #include "newaccount.h"
+#include "dialog.h"
 #include "ui_newaccount.h"
 #include <QString>
 #include <QDebug>
 #include <QLabel>
 #include <QMessageBox>
 #include <QCryptographicHash>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
 
 QString New_username;
 QString New_password;
 QString Confirm_password;
+
+int M_id = 0;
 
 NewAccount::NewAccount(QWidget *parent) :
     QDialog(parent),
@@ -22,37 +28,65 @@ NewAccount::~NewAccount()
     delete ui;
 }
 
+bool NewAccount::createConnection()
+{
+    QSqlDatabase db = QSqlDatabase::database("passwordmanager");
 
+    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+
+    //Setting the relative path
+    db.setDatabaseName("../College_Build_of_PWManager/Db/passwordmanager.sqlite");
+    if(!db.open())
+         {
+             QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
+         }
+    else
+        qDebug ()<<"Connected!"; // TEST
+    return true;
+}
 void NewAccount::on_RegisterButton_clicked()
 {
-    //Get the Inputs
+       //Password confirmation handled by Signals and Slots...Get the Inputs
+
        New_username = ui->NewUsernameBox->text();
        New_password = ui->NewPasswordBox->text();
        Confirm_password = ui->ConfirmPasswordBox->text();
-       //Password Entry Confirm, Re-Confirm
-       if(New_password == Confirm_password)
+
+       QString Reg_query;
+       if(confirm_password_check() && createConnection())
        {
-
-           connect(ui->ConfirmPasswordBox, SIGNAL(returnPressed()),ui->RegisterButton,SLOT(click()));
-           ui->re_confirm->setText(""); //Set label back to empty
-
            //Hash the password
            QByteArray password_hashkey ;
            password_hashkey.append(New_password);
            QCryptographicHash passwordHasher(QCryptographicHash::Sha1);
            passwordHasher.addData(password_hashkey);
-
            QByteArray hash_key_result = passwordHasher.result();
-           qDebug()<< hash_key_result;
+           qDebug()<< "New-account, reg button clicked"+hash_key_result;
 
-       }
-       else
-       {
 
-           connect(ui->ConfirmPasswordBox, SIGNAL(returnPressed()),ui->ConfirmPasswordBox,SLOT(setFocus()));
-           ui->re_confirm->setText("<font color = red> Please re-enter the password correctly!</font>");
+           QSqlDatabase db=QSqlDatabase::database("passwordmanager");
+           QSqlQuery Reg_query(db);
+           Reg_query.prepare("INSERT INTO pwmanager (M_ID,Username,MasterPassword) VALUES(:mid,:username,:password)");
+           Reg_query.bindValue(":mid",M_id);
+           Reg_query.bindValue(":username",New_username);
+           Reg_query.bindValue(":password",hash_key_result);
+           Reg_query.exec();
+
+           M_id++;
+
+           QMessageBox::StandardButton registered;
+           registered = QMessageBox::information(this,"Successfull Register","Your account has been registered!<br>Please log in to continue!");
+           if(registered)
+           {
+               Dialog *s = new Dialog;
+               s->show();
+               close();
+           }
        }
+
 }
+
+
 
 void NewAccount::on_CancelButton_clicked()
 {
@@ -60,6 +94,8 @@ void NewAccount::on_CancelButton_clicked()
     cancel=QMessageBox::question(this,"Cancel","Do you really want to cancel ?",QMessageBox::Yes|QMessageBox::No);
     if(cancel==QMessageBox::Yes)
     {
+        Dialog *s = new Dialog;
+        s->show();
         close();
     }
 }

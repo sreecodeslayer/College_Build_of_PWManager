@@ -24,6 +24,7 @@ private slots:
 
     void on_ConfirmPasswordBox_textEdited(const QString &arg1);
 
+    bool createConnection();
 private:
     Ui::NewAccount *ui;
 };
