@@ -33,10 +33,10 @@
    <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>251</width>
-      <height>353</height>
+      <x>11</x>
+      <y>11</y>
+      <width>161</width>
+      <height>391</height>
      </rect>
     </property>
     <property name="iconSize">
@@ -51,8 +51,26 @@
      </property>
      <property name="font">
       <font>
-       <pointsize>11</pointsize>
+       <pointsize>8</pointsize>
       </font>
+     </property>
+     <property name="foreground">
+      <brush brushstyle="Dense4Pattern">
+       <color alpha="255">
+        <red>0</red>
+        <green>0</green>
+        <blue>0</blue>
+       </color>
+      </brush>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources.qrc">
+       <normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>E-Mails</string>
      </property>
      <property name="icon">
       <iconset resource="Resources.qrc">
@@ -63,6 +81,11 @@
      <property name="text">
       <string>Bank</string>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="icon">
       <iconset resource="Resources.qrc">
        <normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</iconset>
@@ -72,41 +95,26 @@
      <property name="text">
       <string>Education</string>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>8</pointsize>
+      </font>
+     </property>
      <property name="icon">
       <iconset resource="Resources.qrc">
        <normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</iconset>
      </property>
     </item>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QTableView" name="tableView">
     <property name="geometry">
      <rect>
-      <x>275</x>
+      <x>180</x>
       <y>10</y>
-      <width>351</width>
-      <height>341</height>
+      <width>451</width>
+      <height>391</height>
      </rect>
     </property>
-    <column>
-     <property name="text">
-      <string>Name</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>UserName</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Password</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string/>
-     </property>
-    </column>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -115,7 +123,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>25</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">

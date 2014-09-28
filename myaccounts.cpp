@@ -43,11 +43,10 @@ void MyAccounts::populateTable()
     QSqlDatabase db = QSqlDatabase::database("passwordmanager");
     db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
 
-    QSqlTableModel *model = new QSqlTableModel;
+    QSqlTableModel *model = new QSqlTableModel(0,db);
     model->setTable("Useraccount");
     model->select();
 
-    ui->my_account_table->setModel(model);
     qDebug()<<model->lastError().text();
 
 

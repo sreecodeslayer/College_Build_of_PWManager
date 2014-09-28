@@ -3,5 +3,6 @@
         <file>Resources/Bg-Images/account_and_control.png</file>
         <file>Resources/Bg-Images/key.png</file>
         <file>Resources/Icons/lock-icon.png</file>
+        <file>Resources/Bg-Images/list-tree-50p.png</file>
     </qresource>
 </RCC>
