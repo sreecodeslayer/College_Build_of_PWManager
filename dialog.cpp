@@ -23,12 +23,14 @@ Dialog::Dialog(QWidget *parent) :
     createConnection();
 }
 
+QSqlDatabase db = QSqlDatabase::database("passwordmanager");
+
 Dialog::~Dialog()
 {
     delete ui;
+    db.close();
 }
 
-QSqlDatabase db = QSqlDatabase::database("passwordmanager");
 
 bool Dialog::createConnection()
 {
@@ -37,7 +39,7 @@ bool Dialog::createConnection()
     QString path = QDir::currentPath();
 
     //Setting the relative path
-    db.setDatabaseName("../Lock-Up/Db/passwordmanager.sqlite");
+    db.setDatabaseName("../College_Build_of_PWManager/Db/passwordmanager.sqlite");
     if(!db.open())
          {
              QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);

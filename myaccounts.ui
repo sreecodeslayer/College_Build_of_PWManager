@@ -29,7 +29,18 @@
    <iconset resource="Resources.qrc">
     <normaloff>:/new/prefix1/Resources/Icons/lock-icon.png</normaloff>:/new/prefix1/Resources/Icons/lock-icon.png</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableView" name="my_account_table">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>621</width>
+      <height>401</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>

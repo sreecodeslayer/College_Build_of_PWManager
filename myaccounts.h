@@ -14,6 +14,9 @@ class MyAccounts : public QMainWindow
 public:
     explicit MyAccounts(QWidget *parent = 0);
     ~MyAccounts();
+private slots:
+    void populateTable();
+    bool createConnection();
 
 private:
     Ui::MyAccounts *ui;
