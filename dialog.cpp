@@ -39,7 +39,7 @@ bool Dialog::createConnection()
     QString path = QDir::currentPath();
 
     //Setting the relative path
-    db.setDatabaseName("../College_Build_of_PWManager/Db/passwordmanager.sqlite");
+    db.setDatabaseName("../Lock-Up/Db/passwordmanager.sqlite");
     if(!db.open())
          {
              QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
