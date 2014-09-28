@@ -15,13 +15,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         dialog.cpp \
-    newaccount.cpp
+    newaccount.cpp \
+    myaccounts.cpp
 
 HEADERS  += dialog.h \
-    newaccount.h
+    newaccount.h \
+    myaccounts.h
 
 FORMS    += dialog.ui \
-    newaccount.ui
+    newaccount.ui \
+    myaccounts.ui
 
 RESOURCES += \
     Resources.qrc \

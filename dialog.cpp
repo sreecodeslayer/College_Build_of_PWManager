@@ -8,6 +8,7 @@
 #include <QSqlQuery>
 #include <QDir>
 #include <QCryptographicHash>
+#include "myaccounts.h"
 
 
 QString password;
@@ -27,7 +28,8 @@ Dialog::~Dialog()
     delete ui;
 }
 
-QSqlDatabase db=QSqlDatabase::database("passwordmanager");
+QSqlDatabase db = QSqlDatabase::database("passwordmanager");
+
 bool Dialog::createConnection()
 {
 
@@ -35,7 +37,7 @@ bool Dialog::createConnection()
     QString path = QDir::currentPath();
 
     //Setting the relative path
-    db.setDatabaseName("../College_Build_of_PWManager/Db/passwordmanager.sqlite");
+    db.setDatabaseName("../Lock-Up/Db/passwordmanager.sqlite");
     if(!db.open())
          {
              QMessageBox::information(0, "Connection Failed!", db.lastError().text(),QMessageBox::Ok, QMessageBox::NoButton);
@@ -58,6 +60,7 @@ void Dialog::on_LogInButton_clicked()
         QCryptographicHash passwordHasher(QCryptographicHash::Sha1);
         passwordHasher.addData(password_hashkey);
         QByteArray hash_key_result = passwordHasher.result();
+        QString s = hash_key_result;
         qDebug()<< "Dialog-, log in button clicked" + hash_key_result;
 
         QSqlQuery Log_in_query(db);
@@ -68,12 +71,23 @@ void Dialog::on_LogInButton_clicked()
         {
             output_username = Log_in_query.value(0).toString();
             output_hashedpassword = Log_in_query.value(1).toString();
+
+            if(output_hashedpassword == s && output_username == username)
+            {
+                ui->loginerror->setText("");
+
+                qDebug()<<"Now open next ui!";
+                MyAccounts *main_ui = new MyAccounts;
+                main_ui->show();
+                close();
+                break;
+
+            }
+            else
+            {
+              ui->loginerror->setText("<font color = red size = 4>Invalid Username and/or Password,<br> Please try again</font>");
+            }
         }
-
-
-
-
-
 
 
 }

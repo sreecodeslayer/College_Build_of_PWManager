@@ -33,7 +33,7 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>290</y>
+     <y>300</y>
      <width>111</width>
      <height>41</height>
     </rect>
@@ -128,11 +128,25 @@
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="loginerror">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>231</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>layoutWidget</zorder>
   <zorder>LogInButton</zorder>
   <zorder>NewAccountButton</zorder>
   <zorder>QuitButton</zorder>
   <zorder>label_3</zorder>
+  <zorder>loginerror</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
