@@ -2,6 +2,7 @@
 #define MYACCOUNTS_H
 
 #include <QMainWindow>
+#include<QSqlDatabase>
 
 namespace Ui {
 class MyAccounts;
@@ -10,6 +11,7 @@ class MyAccounts;
 class MyAccounts : public QMainWindow
 {
     Q_OBJECT
+    QSqlDatabase db;
 
 public:
     explicit MyAccounts(QWidget *parent = 0);

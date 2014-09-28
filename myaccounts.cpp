@@ -24,8 +24,8 @@ MyAccounts::~MyAccounts()
 bool MyAccounts::createConnection()
 {
 
-    QSqlDatabase db = QSqlDatabase::database("passwordmanager");
-    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    db = QSqlDatabase::database("passwordmanager");
+    //db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
 
     //Setting the relative path
     db.setDatabaseName("../Lock-Up/Db/passwordmanager.sqlite");
@@ -40,8 +40,7 @@ bool MyAccounts::createConnection()
 
 void MyAccounts::populateTable()
 {
-    QSqlDatabase db = QSqlDatabase::database("passwordmanager");
-    db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
+    //db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
 
     QSqlTableModel *model = new QSqlTableModel(0,db);
     model->setTable("Useraccount");
