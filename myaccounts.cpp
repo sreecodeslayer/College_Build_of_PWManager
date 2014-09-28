@@ -7,6 +7,7 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQuery>
+#include "addentry.h"
 
 MyAccounts::MyAccounts(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +21,7 @@ MyAccounts::MyAccounts(QWidget *parent) :
 MyAccounts::~MyAccounts()
 {
     delete ui;
+    db.close(); //moved db.close to here for editable table view
 }
 
 bool MyAccounts::createConnection()
@@ -47,8 +49,10 @@ void MyAccounts::populateTable()
     QSqlTableModel *model = new QSqlTableModel(this,db);
     model->setTable("useraccount");
     model->select();
-    model->setHeaderData(0, Qt::Horizontal, tr("First col"));
-    model->setHeaderData(1, Qt::Horizontal, tr("second col"));
+    model->setHeaderData(0, Qt::Horizontal, tr("Username"));
+    model->setHeaderData(1, Qt::Horizontal, tr("Password"));
+    model->setHeaderData(2, Qt::Horizontal, tr("Link"));
+
     ui->tableView->setModel(model);
     ui->tableView->show();
     ui->tableView->hideColumn(3);
@@ -58,5 +62,12 @@ void MyAccounts::populateTable()
     view->hideColumn(0); // don't show the ID*/
     //view->show();
     qDebug()<<model->lastError().text();
-    db.close();
+    //db.close(); // for enabling editable table, db needs to remain open!
+}
+
+void MyAccounts::on_action_New_triggered()
+{
+    AddEntry *new_entry = new AddEntry;
+    new_entry->show();
+
 }
