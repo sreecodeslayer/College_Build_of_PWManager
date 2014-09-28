@@ -14,6 +14,7 @@ MyAccounts::MyAccounts(QWidget *parent) :
 {
     ui->setupUi(this);
     createConnection();
+    populateTable();
 }
 
 MyAccounts::~MyAccounts()
@@ -42,12 +43,19 @@ void MyAccounts::populateTable()
 {
     //db = QSqlDatabase :: addDatabase("QSQLITE","passwordmanager");
 
-    QSqlTableModel *model = new QSqlTableModel(0,db);
-    model->setTable("Useraccount");
+    qDebug()<<"Now populate";
+    QSqlTableModel *model = new QSqlTableModel(this,db);
+    model->setTable("useraccount");
     model->select();
+    model->setHeaderData(0, Qt::Horizontal, tr("First col"));
+    model->setHeaderData(1, Qt::Horizontal, tr("second col"));
+    ui->tableView->setModel(model);
+    ui->tableView->show();
 
+   /* QTableView *view = new QTableView;
+    view->setModel(model);
+    view->hideColumn(0); // don't show the ID*/
+    //view->show();
     qDebug()<<model->lastError().text();
-
-
     db.close();
 }

@@ -19,7 +19,6 @@ public:
 private slots:
     void populateTable();
     bool createConnection();
-
 private:
     Ui::MyAccounts *ui;
 };
