@@ -51,6 +51,7 @@ void MyAccounts::populateTable()
     model->setHeaderData(1, Qt::Horizontal, tr("second col"));
     ui->tableView->setModel(model);
     ui->tableView->show();
+    ui->tableView->hideColumn(3);
 
    /* QTableView *view = new QTableView;
     view->setModel(model);

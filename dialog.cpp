@@ -20,11 +20,9 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Log In");
+   // db = QSqlDatabase::database("passwordmanager");
     createConnection();
 }
-
-QSqlDatabase db = QSqlDatabase::database("passwordmanager");
-
 Dialog::~Dialog()
 {
     delete ui;
