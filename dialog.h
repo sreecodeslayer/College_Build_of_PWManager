@@ -16,6 +16,7 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
+    QSqlDatabase db;
 
 private slots:
     void on_LogInButton_clicked();
