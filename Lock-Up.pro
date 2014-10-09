@@ -17,12 +17,14 @@ SOURCES += main.cpp\
         dialog.cpp \
     newaccount.cpp \
     myaccounts.cpp \
-    addentry.cpp
+    addentry.cpp \
+    tinyaes.cpp
 
 HEADERS  += dialog.h \
     newaccount.h \
     myaccounts.h \
-    addentry.h
+    addentry.h \
+    tinyaes.h
 
 FORMS    += dialog.ui \
     newaccount.ui \

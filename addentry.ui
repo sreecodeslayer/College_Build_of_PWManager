@@ -49,7 +49,7 @@
    <property name="title">
     <string>Enter the details: </string>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>11</x>
@@ -159,6 +159,15 @@
               <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
             </property>
            </item>
+           <item>
+            <property name="text">
+             <string>Education</string>
+            </property>
+            <property name="icon">
+             <iconset resource="Resources.qrc">
+              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -183,7 +192,7 @@
               <string>Password:</string>
              </property>
              <property name="buddy">
-              <cstring>add_paswword</cstring>
+              <cstring>add_password</cstring>
              </property>
             </widget>
            </item>
@@ -205,7 +214,7 @@
             <widget class="QLineEdit" name="add_username"/>
            </item>
            <item>
-            <widget class="QLineEdit" name="add_paswword">
+            <widget class="QLineEdit" name="add_password">
              <property name="echoMode">
               <enum>QLineEdit::Password</enum>
              </property>
@@ -222,7 +231,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -248,23 +257,12 @@
      </item>
     </layout>
    </widget>
-   <zorder>label</zorder>
-   <zorder>label_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>add_username</zorder>
-   <zorder>add_paswword</zorder>
-   <zorder>add_link</zorder>
-   <zorder>buttonBox</zorder>
-   <zorder>label_4</zorder>
-   <zorder>Ok_Button</zorder>
-   <zorder>Cancel_Button</zorder>
-   <zorder></zorder>
   </widget>
  </widget>
  <tabstops>
   <tabstop>account_type_list</tabstop>
   <tabstop>add_username</tabstop>
-  <tabstop>add_paswword</tabstop>
+  <tabstop>add_password</tabstop>
   <tabstop>add_link</tabstop>
  </tabstops>
  <resources>
