@@ -19,6 +19,13 @@ public:
 private slots:
     void populateTable();
     bool createConnection();
+
+    void on_action_New_triggered();
+
+    void on_action_Close_triggered();
+
+    void on_listWidget_clicked(const QModelIndex &index);
+
 private:
     Ui::MyAccounts *ui;
 };

@@ -77,9 +77,9 @@ void Dialog::on_LogInButton_clicked()
                 ui->loginerror->setText("");
 
                 qDebug()<<"Now open next ui!";
+                this->hide();
                 MyAccounts *main_ui = new MyAccounts;
                 main_ui->show();
-                close();
                 break;
 
             }
@@ -97,6 +97,7 @@ void Dialog::on_NewAccountButton_clicked()
     NewAccount *dialog=new NewAccount();
     dialog->setWindowTitle("Register");
     this->hide();
+    db.close();
     dialog->show();
 }
 
@@ -108,6 +109,7 @@ void Dialog::on_QuitButton_clicked()
 
     if(reply == QMessageBox::Yes)
     {
+     db.close();
      close();
     }
 }

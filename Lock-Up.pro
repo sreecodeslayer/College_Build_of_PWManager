@@ -16,15 +16,20 @@ TEMPLATE = app
 SOURCES += main.cpp\
         dialog.cpp \
     newaccount.cpp \
-    myaccounts.cpp
+    myaccounts.cpp \
+    addentry.cpp \
+    tinyaes.cpp
 
 HEADERS  += dialog.h \
     newaccount.h \
-    myaccounts.h
+    myaccounts.h \
+    addentry.h \
+    tinyaes.h
 
 FORMS    += dialog.ui \
     newaccount.ui \
-    myaccounts.ui
+    myaccounts.ui \
+    addentry.ui
 
 RESOURCES += \
     Resources.qrc \
