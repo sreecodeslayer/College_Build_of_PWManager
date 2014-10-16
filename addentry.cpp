@@ -105,7 +105,7 @@ void AddEntry::on_Ok_Button_clicked()
     QSqlQuery qry(db);
     qry.prepare("INSERT INTO useraccount (Username,Password,Link,M_ID,AccType) VALUES(:usr,:pass,:l,:m,:acc)");
     qry.bindValue(":usr",acc_username);
-    qry.bindValue(":pass",encryptPassword(acc_password));
+    qry.bindValue(":pass",/*encryptPassword(*/acc_password/*)*/);
     qry.bindValue(":l",acc_link);
     qry.bindValue(":m","o1");
     qry.bindValue(":acc",listitem);
