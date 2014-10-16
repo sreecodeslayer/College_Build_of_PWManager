@@ -4,6 +4,12 @@
 #include <QDialog>
 #include <QListWidgetItem>
 #include <QSqlDatabase>
+#include <crypto++/aes.h>
+#include <crypto++/modes.h>
+#include <crypto++/filters.h>
+#include <crypto++/hex.h>
+#include <crypto++/sha.h>
+#include <crypto++/md5.h>
 
 namespace Ui {
 class AddEntry;
@@ -15,6 +21,8 @@ class AddEntry : public QDialog
 
 public:
     explicit AddEntry(QWidget *parent = 0);
+    QString decrypt(const QString&);
+    QString encrypt(const QString& );
     ~AddEntry();
     QSqlDatabase db;
 private slots:
