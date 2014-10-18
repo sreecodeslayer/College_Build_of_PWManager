@@ -26,6 +26,8 @@ private slots:
 
     void on_listWidget_clicked(const QModelIndex &index);
 
+    void on_actionDelete_Entry_triggered();
+
 private:
     Ui::MyAccounts *ui;
 };

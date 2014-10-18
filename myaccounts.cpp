@@ -196,3 +196,8 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
     }
 }
+
+void MyAccounts::on_actionDelete_Entry_triggered()
+{
+
+}

@@ -103,11 +103,11 @@ void AddEntry::on_Ok_Button_clicked()
     qDebug() << acc_link << " "<< acc_password << " " << acc_username;
 
     QSqlQuery qry(db);
-    qry.prepare("INSERT INTO useraccount (Username,Password,Link,M_ID,AccType) VALUES(:usr,:pass,:l,:m,:acc)");
+    qry.prepare("INSERT INTO useraccount (Username,Password,Link,AccType) VALUES(:usr,:pass,:l,:acc)");
     qry.bindValue(":usr",acc_username);
-    qry.bindValue(":pass",/*encryptPassword(*/acc_password/*)*/);
+    qry.bindValue(":pass",encrPassword(acc_password)); //----> encryptPassword(acc_password)
     qry.bindValue(":l",acc_link);
-    qry.bindValue(":m","o1");
+    //qry.bindValue(":m","o1");
     qry.bindValue(":acc",listitem);
     qry.exec();
     MyAccounts *goback = new MyAccounts;
@@ -131,6 +131,29 @@ void AddEntry::on_Cancel_Button_clicked()
         close();
         db.close();
     }
-
-
 }
+
+//Encryption Codes
+TinyAES pass;
+QByteArray en_de_key = pass.HexStringToByte("bdefcbc7554e30ceef8a238d1fec5a8639dac00bdccd2141dbc0f9534c1372a9");
+
+//actually is there a need to replace the key with MasterPassword?
+
+QString AddEntry::encrPassword(QString acc_password)
+{
+    QByteArray encr_password = pass.HexStringToByte(acc_password);
+    QByteArray encr_result;
+    encr_result = pass.Encrypt(encr_password,en_de_key);
+
+    qDebug()<< encr_result << "Encrypted";
+    decrPassword(encr_result);//just to test both function
+    return encr_result;
+}
+
+QString AddEntry::decrPassword(QByteArray encr_password)
+{
+    QByteArray plain_text = pass.Decrypt(encr_password,en_de_key);
+    qDebug()<< plain_text <<"Decrypted";
+    return plain_text;
+}
+

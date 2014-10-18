@@ -85,7 +85,7 @@ void Dialog::on_LogInButton_clicked()
             }
             else
             {
-              ui->loginerror->setText("<font color = red size = 4>Invalid Username and/or Password,<br> Please try again</font>");
+              ui->loginerror->setText("<font color = red size = 3>Invalid Username and/or Password,<br> Please try again or register new account!</font>");
             }
         }
 

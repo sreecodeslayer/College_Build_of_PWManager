@@ -18,18 +18,21 @@ SOURCES += main.cpp\
     newaccount.cpp \
     myaccounts.cpp \
     addentry.cpp \
-    tinyaes.cpp
+    tinyaes.cpp \
+    delentry.cpp
 
 HEADERS  += dialog.h \
     newaccount.h \
     myaccounts.h \
     addentry.h \
-    tinyaes.h
+    tinyaes.h \
+    delentry.h
 
 FORMS    += dialog.ui \
     newaccount.ui \
     myaccounts.ui \
-    addentry.ui
+    addentry.ui \
+    delentry.ui
 
 RESOURCES += \
     Resources.qrc \
