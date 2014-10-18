@@ -48,7 +48,7 @@
  */
 
 #include "tinyaes.h"
-
+#include <QDebug>
 TinyAES::TinyAES()
 {
 }
@@ -131,6 +131,7 @@ QByteArray TinyAES::Decrypt(QByteArray p_input, QByteArray p_key, QByteArray p_i
     aes_cbc_decrypt(encrypted, decrypted, inputSize, iv, &context);
 
     QByteArray result = RemovePadding(UCharArrayToQByteArray(decrypted, inputSize));
+
     return result;
 }
 

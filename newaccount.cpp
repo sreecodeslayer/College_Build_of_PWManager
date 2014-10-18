@@ -73,7 +73,8 @@ void NewAccount::on_RegisterButton_clicked()
            Reg_query.bindValue(":username",New_username);
            Reg_query.bindValue(":password",hash_key_result);
            Reg_query.exec();
-  	   QMessageBox::information(this,"", Reg_query.lastError().text());
+
+           QMessageBox::information(this,"", Reg_query.lastError().text());
 
            QMessageBox::StandardButton registered;
            registered = QMessageBox::information(this,"Successfull Register","Your account has been registered!<br>Please log in to continue!");

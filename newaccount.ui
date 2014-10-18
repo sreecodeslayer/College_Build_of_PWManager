@@ -156,6 +156,13 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>NewUsernameBox</tabstop>
+  <tabstop>NewPasswordBox</tabstop>
+  <tabstop>ConfirmPasswordBox</tabstop>
+  <tabstop>RegisterButton</tabstop>
+  <tabstop>CancelButton</tabstop>
+ </tabstops>
  <resources>
   <include location="Resources.qrc"/>
  </resources>

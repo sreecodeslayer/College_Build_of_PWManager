@@ -128,6 +128,8 @@ void AddEntry::on_Cancel_Button_clicked()
 
     if(cancel == QMessageBox::Yes)
     {
+        MyAccounts *goback = new MyAccounts;
+        goback->show();
         close();
         db.close();
     }
@@ -135,7 +137,7 @@ void AddEntry::on_Cancel_Button_clicked()
 
 //Encryption Codes
 TinyAES pass;
-QByteArray en_de_key = pass.HexStringToByte("bdefcbc7554e30ceef8a238d1fec5a8639dac00bdccd2141dbc0f9534c1372a9");
+QByteArray en_de_key = pass.HexStringToByte("729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E");
 
 //actually is there a need to replace the key with MasterPassword?
 
@@ -145,7 +147,7 @@ QString AddEntry::encrPassword(QString acc_password)
     QByteArray encr_result;
     encr_result = pass.Encrypt(encr_password,en_de_key);
 
-    qDebug()<< encr_result << "Encrypted";
+    qDebug()<<QString(encr_result)<< "Encrypted";
     decrPassword(encr_result);//just to test both function
     return encr_result;
 }
@@ -153,7 +155,7 @@ QString AddEntry::encrPassword(QString acc_password)
 QString AddEntry::decrPassword(QByteArray encr_password)
 {
     QByteArray plain_text = pass.Decrypt(encr_password,en_de_key);
-    qDebug()<< plain_text <<"Decrypted";
+    qDebug()<< QString(plain_text)<<" Decrypted";
     return plain_text;
 }
 

@@ -28,6 +28,12 @@ private slots:
 
     void on_actionDelete_Entry_triggered();
 
+    void on_AddEntryButton_clicked();
+
+    void on_DeleteButton_clicked();
+
+    void on_EditButton_clicked();
+
 private:
     Ui::MyAccounts *ui;
 };

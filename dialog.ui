@@ -87,7 +87,7 @@
     <pixmap resource="Resources.qrc">:/new/prefix1/Resources/Bg-Images/key.png</pixmap>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -147,9 +147,15 @@
   <zorder>NewAccountButton</zorder>
   <zorder>QuitButton</zorder>
   <zorder>label_3</zorder>
-  <zorder>loginerror</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>UsernameBox</tabstop>
+  <tabstop>PasswordBox</tabstop>
+  <tabstop>LogInButton</tabstop>
+  <tabstop>NewAccountButton</tabstop>
+  <tabstop>QuitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="Resources.qrc"/>
  </resources>

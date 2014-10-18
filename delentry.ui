@@ -2,36 +2,81 @@
 <ui version="4.0">
  <class>DelEntry</class>
  <widget class="QDialog" name="DelEntry">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>351</width>
-    <height>174</height>
-   </rect>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Resources.qrc">
+    <normaloff>:/new/prefix1/Resources/Icons/lock-icon.png</normaloff>:/new/prefix1/Resources/Icons/lock-icon.png</iconset>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>331</width>
+     <width>231</width>
      <height>151</height>
     </rect>
    </property>
    <property name="title">
     <string>Please enter the details</string>
    </property>
+   <widget class="QLabel" name="DeleteErrorLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>211</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>191</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="DeleteAllButton">
+       <property name="text">
+        <string>Delete All</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DeleteButton">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>22</x>
      <y>42</y>
-     <width>210</width>
+     <width>211</width>
      <height>52</height>
     </rect>
    </property>
@@ -42,6 +87,9 @@
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Username</string>
+        </property>
+        <property name="buddy">
+         <cstring>username</cstring>
         </property>
        </widget>
       </item>
@@ -59,7 +107,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="username"/>
       </item>
      </layout>
     </item>
@@ -69,6 +117,9 @@
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Link</string>
+        </property>
+        <property name="buddy">
+         <cstring>user_link</cstring>
         </property>
        </widget>
       </item>
@@ -86,13 +137,15 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="user_link"/>
       </item>
      </layout>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
