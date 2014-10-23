@@ -60,7 +60,7 @@ void Dialog::on_LogInButton_clicked()
         QCryptographicHash passwordHasher(QCryptographicHash::Sha1);
         passwordHasher.addData(password_hashkey);
         QByteArray hash_key_result = passwordHasher.result();
-        QString s = hash_key_result;
+        QString hash_str = hash_key_result;
         qDebug()<< "Dialog-, log in button clicked" + hash_key_result;
 
         QSqlQuery Log_in_query(db);
@@ -72,7 +72,7 @@ void Dialog::on_LogInButton_clicked()
             output_username = Log_in_query.value(0).toString();
             output_hashedpassword = Log_in_query.value(1).toString();
 
-            if(output_hashedpassword == s && output_username == username)
+            if(output_hashedpassword == hash_str && output_username == username)
             {
                 ui->loginerror->setText("");
 
@@ -85,7 +85,7 @@ void Dialog::on_LogInButton_clicked()
             }
             else
             {
-              ui->loginerror->setText("<font color = red size = 4>Invalid Username and/or Password,<br> Please try again</font>");
+              ui->loginerror->setText("<font color = red size = 3>Invalid Username and/or Password,<br> Please try again or register new account!</font>");
             }
         }
 

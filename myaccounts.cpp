@@ -7,7 +7,9 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQuery>
+#include "delentry.h"
 #include "addentry.h"
+#include "editentry.h"
 
 MyAccounts::MyAccounts(QWidget *parent) :
     QMainWindow(parent),
@@ -195,4 +197,28 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
 
     }
+}
+
+void MyAccounts::on_actionDelete_Entry_triggered()
+{
+    DelEntry *del = new DelEntry();
+    this->hide();
+    del->show();
+}
+
+void MyAccounts::on_AddEntryButton_clicked()
+{
+    on_action_New_triggered();
+}
+
+void MyAccounts::on_DeleteButton_clicked()
+{
+    on_actionDelete_Entry_triggered();
+}
+
+void MyAccounts::on_EditButton_clicked()
+{
+    EditEntry *edit = new EditEntry();
+    edit->show();
+    this->hide();
 }

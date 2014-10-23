@@ -10,6 +10,8 @@
 #include "tinyaes.h"
 #include <QMessageBox>
 #include "myaccounts.h"
+#define PRIVATE_KEY "729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E37011" //this must be replaced by master password
+
 
 AddEntry::AddEntry(QWidget *parent) :
     QDialog(parent),
@@ -23,7 +25,57 @@ AddEntry::~AddEntry()
 {
     delete ui;
 }
+/*QString AddEntry::decrypt(const QString &password)
+{
+    QString plain;
+    QString encrypted = password.toStdString();
+    // Hex decode symmetric key:
+    HexDecoder decoder;
+    decoder.Put( (byte *)PRIVATE_KEY,32*2 );
+    decoder.MessageEnd();
+    word64 size = decoder.MaxRetrievable();
+    char *decodedKey = new char[size];
+    decoder.Get((byte *)decodedKey, size);
+    // Generate Cipher, Key, and CBC
+    byte key[ AES::MAX_KEYLENGTH ], iv[ AES::BLOCKSIZE ];
+    StringSource( reinterpret_cast<const char *>(decodedKey), true,
+                  new HashFilter(*(new SHA256), new ArraySink(key, AES::MAX_KEYLENGTH)) );
+    memset( iv, 0x00, AES::BLOCKSIZE );
+    try {
+        CBC_Mode<AES>::Decryption Decryptor
+        ( key, sizeof(key), iv );
+        StringSource( encrypted, true,
+                      new HexDecoder(new StreamTransformationFilter( Decryptor,
+                                     new StringSink( plain ) ) ) );
+    }
+    catch (Exception &e) { // ...
+    }
+    catch (...) { // ...
+    }
+    return QString::fromStdString(plain);
+}
 
+QString AddEntry::encrypt(const QString &password)
+{
+    string plain = password.toStdString();
+    string ciphertext;
+    // Hex decode symmetric key:
+    HexDecoder decoder;
+    decoder.Put( (byte *)PRIVATE_KEY, 32*2 );
+    decoder.MessageEnd();
+    word64 size = decoder.MaxRetrievable();
+    char *decodedKey = new char[size];
+    decoder.Get((byte *)decodedKey, size);
+    // Generate Cipher, Key, and CBC
+    byte key[ AES::MAX_KEYLENGTH ], iv[ AES::BLOCKSIZE ];
+    StringSource( reinterpret_cast<const char *>(decodedKey), true,
+                  new HashFilter(*(new SHA256), new ArraySink(key, AES::MAX_KEYLENGTH)) );
+    memset( iv, 0x00, AES::BLOCKSIZE );
+    CBC_Mode<AES>::Encryption Encryptor( key, sizeof(key), iv );
+    StringSource( plain, true, new StreamTransformationFilter( Encryptor,
+                  new HexEncoder(new StringSink( ciphertext ) ) ) );
+    return QString::fromStdString(ciphertext);
+}*/
 bool AddEntry::createConnection()
 {
 
@@ -51,11 +103,11 @@ void AddEntry::on_Ok_Button_clicked()
     qDebug() << acc_link << " "<< acc_password << " " << acc_username;
 
     QSqlQuery qry(db);
-    qry.prepare("INSERT INTO useraccount (Username,Password,Link,M_ID,AccType) VALUES(:usr,:pass,:l,:m,:acc)");
+    qry.prepare("INSERT INTO useraccount (Username,Password,Link,AccType) VALUES(:usr,:pass,:l,:acc)");
     qry.bindValue(":usr",acc_username);
-    qry.bindValue(":pass",acc_password);
+    qry.bindValue(":pass",encrPassword(acc_password)); //----> encryptPassword(acc_password)
     qry.bindValue(":l",acc_link);
-    qry.bindValue(":m","o1");
+    //qry.bindValue(":m","o1");
     qry.bindValue(":acc",listitem);
     qry.exec();
     MyAccounts *goback = new MyAccounts;
@@ -76,9 +128,34 @@ void AddEntry::on_Cancel_Button_clicked()
 
     if(cancel == QMessageBox::Yes)
     {
+        MyAccounts *goback = new MyAccounts;
+        goback->show();
         close();
         db.close();
     }
-
-
 }
+
+//Encryption Codes
+TinyAES pass;
+QByteArray en_de_key = pass.HexStringToByte("729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E");
+
+//actually is there a need to replace the key with MasterPassword?
+
+QString AddEntry::encrPassword(QString acc_password)
+{
+    QByteArray encr_password = pass.HexStringToByte(acc_password);
+    QByteArray encr_result;
+    encr_result = pass.Encrypt(encr_password,en_de_key);
+
+    qDebug()<<QString(encr_result)<< "Encrypted";
+    decrPassword(encr_result);//just to test both function
+    return encr_result;
+}
+
+QString AddEntry::decrPassword(QByteArray encr_password)
+{
+    QByteArray plain_text = pass.Decrypt(encr_password,en_de_key);
+    qDebug()<< QString(plain_text)<<" Decrypted";
+    return plain_text;
+}
+

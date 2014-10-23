@@ -68,11 +68,13 @@ void NewAccount::on_RegisterButton_clicked()
 
            QSqlDatabase db=QSqlDatabase::database("passwordmanager");
            QSqlQuery Reg_query(db);
-           Reg_query.prepare("INSERT INTO pwmanager (M_ID,Username,MasterPassword) VALUES(:mid,:username,:password)");
-           Reg_query.bindValue(":mid",M_id_Label); //this is not working as expected o.O :D
+           Reg_query.prepare("INSERT INTO pwmanager (Username,MasterPassword) VALUES(:username,:password)");
+           //Reg_query.bindValue(":mid",M_id_Label); //this is not working as expected o.O :D
            Reg_query.bindValue(":username",New_username);
            Reg_query.bindValue(":password",hash_key_result);
            Reg_query.exec();
+
+           QMessageBox::information(this,"", Reg_query.lastError().text());
 
            QMessageBox::StandardButton registered;
            registered = QMessageBox::information(this,"Successfull Register","Your account has been registered!<br>Please log in to continue!");

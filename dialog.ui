@@ -32,11 +32,14 @@
   <widget class="QPushButton" name="LogInButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>80</x>
      <y>300</y>
      <width>111</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="text">
     <string>Log In</string>
@@ -47,7 +50,7 @@
     <rect>
      <x>10</x>
      <y>350</y>
-     <width>81</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -58,9 +61,9 @@
   <widget class="QPushButton" name="QuitButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>190</x>
      <y>350</y>
-     <width>81</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -87,68 +90,72 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>190</y>
-     <width>231</width>
-     <height>61</height>
+     <width>251</width>
+     <height>101</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Username</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Password</string>
-        </property>
-       </widget>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="UsernameBox"/>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="PasswordBox">
+          <property name="echoMode">
+           <enum>QLineEdit::Password</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLineEdit" name="UsernameBox"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="PasswordBox">
-        <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLabel" name="loginerror">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QLabel" name="loginerror">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>250</y>
-     <width>231</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
   <zorder>layoutWidget</zorder>
   <zorder>LogInButton</zorder>
   <zorder>NewAccountButton</zorder>
   <zorder>QuitButton</zorder>
   <zorder>label_3</zorder>
-  <zorder>loginerror</zorder>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>UsernameBox</tabstop>
+  <tabstop>PasswordBox</tabstop>
+  <tabstop>LogInButton</tabstop>
+  <tabstop>NewAccountButton</tabstop>
+  <tabstop>QuitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="Resources.qrc"/>
  </resources>
