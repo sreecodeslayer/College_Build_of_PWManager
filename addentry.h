@@ -30,6 +30,8 @@ public:
 
     QSqlDatabase db;
 
+    QString acc_password;
+
 private slots:    
     void on_Ok_Button_clicked();
 

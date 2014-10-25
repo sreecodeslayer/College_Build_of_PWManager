@@ -34,6 +34,14 @@ private slots:
 
     void on_EditButton_clicked();
 
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
+    QString decrPassword(QByteArray encr_password);
+
+    void showPass();
+
+    void hidePass();
+
 private:
     Ui::MyAccounts *ui;
 };

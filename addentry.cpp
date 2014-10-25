@@ -18,6 +18,7 @@ AddEntry::AddEntry(QWidget *parent) :
     ui(new Ui::AddEntry)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Add Entry");
     createConnection();
 }
 
@@ -96,7 +97,7 @@ QString listitem;
 void AddEntry::on_Ok_Button_clicked()
 {
     //Get the inputs
-    QString acc_password = ui->add_password->text();
+    acc_password = ui->add_password->text();
     QString acc_username = ui->add_username->text();
     QString acc_link = ui->add_link->text();
 
@@ -118,7 +119,7 @@ void AddEntry::on_Ok_Button_clicked()
 void AddEntry::on_account_type_list_itemClicked(QListWidgetItem *item)
 {
     listitem = ui->account_type_list->currentItem()->text();
-    qDebug()<<listitem;
+    //qDebug()<<listitem;
 }
 
 void AddEntry::on_Cancel_Button_clicked()
@@ -137,7 +138,7 @@ void AddEntry::on_Cancel_Button_clicked()
 
 //Encryption Codes
 TinyAES pass;
-QByteArray en_de_key = pass.HexStringToByte("729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E");
+QByteArray en_de_key = pass.HexStringToByte("729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E");//if changing, change in myaccounts.cpp as well
 
 //actually is there a need to replace the key with MasterPassword?
 
@@ -155,7 +156,9 @@ QString AddEntry::encrPassword(QString acc_password)
 QString AddEntry::decrPassword(QByteArray encr_password)
 {
     QByteArray plain_text = pass.Decrypt(encr_password,en_de_key);
-    qDebug()<< QString(plain_text)<<" Decrypted";
+    QString actual_pass = plain_text.toHex();
+    qDebug()<< QString(plain_text)<<" Decrypted & actuall pass = "<<actual_pass.toUtf8();
+
     return plain_text;
 }
 
