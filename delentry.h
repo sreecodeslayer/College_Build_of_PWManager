@@ -13,7 +13,8 @@ class DelEntry : public QDialog
     Q_OBJECT
 
 public:
-    explicit DelEntry(QWidget *parent = 0);
+    int current_user_id;
+    explicit DelEntry(QWidget *parent = 0,int current_user=1);
     ~DelEntry();
     QSqlDatabase db;
 

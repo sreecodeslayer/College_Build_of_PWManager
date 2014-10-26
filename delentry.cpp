@@ -6,13 +6,14 @@
 #include "myaccounts.h"
 #include <QSqlQuery>
 
-DelEntry::DelEntry(QWidget *parent) :
+DelEntry::DelEntry(QWidget *parent, int current_user) :
     QDialog(parent),
     ui(new Ui::DelEntry)
 {
     ui->setupUi(this);
     this->setWindowTitle("Delete");
     createConnection();
+    current_user_id = current_user;
 }
 
 DelEntry::~DelEntry()
@@ -44,7 +45,8 @@ void DelEntry::on_DeleteButton_clicked()
     {
         ui->DeleteErrorLabel->setText("");
         QSqlQuery del_query(db);
-        del_query.prepare("DELETE FROM Useraccount WHERE Username = :usr AND Link = :link");
+        del_query.prepare("DELETE FROM Useraccount WHERE Username = :usr AND Link = :link AND M_ID = :mid");
+        del_query.bindValue(":mid",QString::number(current_user_id));
         del_query.bindValue(":usr",username);
         del_query.bindValue(":link",user_link);
         if(!del_query.exec())

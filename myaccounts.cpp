@@ -20,8 +20,8 @@ MyAccounts::MyAccounts(QWidget *parent,int current_user) :QMainWindow(parent),ui
     createConnection();
     ui->view_password->setText("<font color = blue size = 2>Double click field to see the actuall password!</font>");
     populateTable();
-    current_user_id=current_user;
-    QMessageBox::information(0, "Current user!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
+    current_user_id = current_user;
+    //QMessageBox::information(0, "Current user!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
 
 }
 
@@ -69,14 +69,7 @@ void MyAccounts::populateTable()
     ui->tableView->show();
     ui->tableView->hideColumn(3);
     ui->tableView->hideColumn(4);
-
-
-   /* QTableView *view = new QTableView;
-    view->setModel(model);
-    view->hideColumn(0); // don't show the ID*/
-    //view->show();
     qDebug()<<model->lastError().text();
-    //db.close(); // for enabling editable table, db needs to remain open!
 }
 
 void MyAccounts::on_action_New_triggered()
@@ -112,8 +105,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
         qDebug()<<type;
 
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'Social Network'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        //specific_model->setFilter("Acctype == 'Social Network'");
+        QString filter = "Acctype == 'Social Network' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -129,11 +124,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     else if(type == "E-Mails")
     {
         //show E-Mails type sorted table
-        qDebug()<<ui->listWidget->currentItem()->text();
-
+        QString filter = "Acctype == 'E-Mails' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'E-Mails'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -150,11 +144,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     else if(type == "Bank")
     {
         //show Bank type sorted table
-        qDebug()<<ui->listWidget->currentItem()->text();
-
+        QString filter = "Acctype == 'Bank' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'Bank'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -171,11 +164,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     else if(type == "Office")
     {
         //show Office type sorted table
-        qDebug()<<ui->listWidget->currentItem()->text();
-
+        QString filter = "Acctype == 'Office' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'Office'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -192,11 +184,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     else if(type == "Online Shopping")
     {
         //show Online shopping type sorted table
-        qDebug()<<ui->listWidget->currentItem()->text();
-
+        QString filter = "Acctype == 'Online Shopping' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'Online Shopping'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -213,11 +204,10 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     else
     {
         //show Education type sorted table
-        qDebug()<<ui->listWidget->currentItem()->text();
-
+        QString filter = "Acctype == 'Education' AND M_ID = " + QString::number(current_user_id);
+        qDebug()<<filter << " <--filter";
         specific_model->setTable("useraccount");
-        specific_model->setFilter("Acctype == 'Education'");
-        specific_model->setFilter("M_ID="+QString::number( current_user_id));
+        specific_model->setFilter(filter);
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -235,7 +225,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
 void MyAccounts::on_actionDelete_Entry_triggered()
 {
-    DelEntry *del = new DelEntry();
+    DelEntry *del = new DelEntry(this,current_user_id);
     this->hide();
     del->show();
 }

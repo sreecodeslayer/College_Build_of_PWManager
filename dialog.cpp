@@ -71,7 +71,7 @@ void Dialog::on_LogInButton_clicked()
         {
             output_username = Log_in_query.value(0).toString();
             output_hashedpassword = Log_in_query.value(1).toString();
-            int current_user_id=Log_in_query.value(2).toString().toInt();
+            int current_user_id = Log_in_query.value(2).toString().toInt();
             if(output_hashedpassword == hash_str && output_username == username)
             {
                 ui->loginerror->setText("");
