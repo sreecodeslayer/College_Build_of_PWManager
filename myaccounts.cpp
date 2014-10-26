@@ -54,8 +54,10 @@ void MyAccounts::populateTable()
 
     qDebug()<<"Now populate";
     db.open();
+
     QSqlTableModel *model = new QSqlTableModel(this,db);
     model->setTable("useraccount");
+    model->setFilter("M_ID="+current_user_id);
     model->select();
     model->setHeaderData(0, Qt::Horizontal, tr("Username"));
     model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -99,6 +101,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
     if(type == "All Accounts")
     {
         //show full table
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         populateTable();
 
     }
@@ -109,6 +112,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'Social Network'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -128,6 +132,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'E-Mails'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -148,6 +153,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'Bank'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -168,6 +174,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'Office'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -188,6 +195,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'Online Shopping'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -208,6 +216,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 
         specific_model->setTable("useraccount");
         specific_model->setFilter("Acctype == 'Education'");
+        specific_model->setFilter("M_ID="+QString::number( current_user_id));
         specific_model->select();
         specific_model->setHeaderData(0, Qt::Horizontal, tr("Username"));
         specific_model->setHeaderData(1, Qt::Horizontal, tr("Password"));
