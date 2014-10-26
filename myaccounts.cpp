@@ -57,7 +57,7 @@ void MyAccounts::populateTable()
 
     QSqlTableModel *model = new QSqlTableModel(this,db);
     model->setTable("useraccount");
-    model->setFilter("M_ID="+current_user_id);
+    model->setFilter("M_ID="+QString::number( current_user_id));
     model->select();
     model->setHeaderData(0, Qt::Horizontal, tr("Username"));
     model->setHeaderData(1, Qt::Horizontal, tr("Password"));
@@ -97,6 +97,7 @@ void MyAccounts::on_listWidget_clicked(const QModelIndex &index)
 {
     QString q,type = ui->listWidget->currentItem()->text();
     QSqlTableModel *specific_model = new QSqlTableModel(this,db);
+    specific_model->setFilter("M_ID="+QString::number( current_user_id));
 
     if(type == "All Accounts")
     {
