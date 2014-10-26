@@ -69,7 +69,27 @@ void MyAccounts::populateTable()
     ui->tableView->show();
     ui->tableView->hideColumn(3);
     ui->tableView->hideColumn(4);
+    //ui->tableView->contextMenuPolicy(Qt::CustomContextMenu);
+    ui->tableView->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->tableView, SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(ShowContextMenu(const QPoint&)));
     qDebug()<<model->lastError().text();
+}
+void MyAccounts::ShowContextMenu(const QPoint& pos) // this is a slot
+{
+    QMenu menu(this);
+   QAction *remove = menu.addAction("remove");
+   QAction *show = menu.addAction("show password");
+   QAction *action = menu.exec(ui->tableView->viewport()->mapToGlobal(pos));
+   if (action == show)
+   {
+       QByteArray password=ui->tableView->indexAt(pos).data().toByteArray();
+       QMessageBox::information(this,"Password",decrPassword(QByteArray::fromHex(password)));
+   }
+   if (action==remove)
+   {
+       //ui->tableView->indexAt(pos).model()->removeRow();
+   }
 }
 
 void MyAccounts::on_action_New_triggered()

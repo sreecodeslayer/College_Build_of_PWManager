@@ -43,6 +43,7 @@ private slots:
     void showPass();
 
     void hidePass();
+    void ShowContextMenu(const QPoint& ) ;
 
 private:
     Ui::MyAccounts *ui;
