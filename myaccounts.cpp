@@ -247,7 +247,7 @@ void MyAccounts::on_EditButton_clicked()
 }
 
 TinyAES p;
-QByteArray encr_decr_key = p.HexStringToByte("729308A8E815F6A46EB3A8AE6D5463CA7B64A0E2E11BC26A68106FC7697E727E");
+QByteArray encr_decr_key = p.HexStringToByte("94baaf5764ad4948304eb538bb5839c50350f02eabc053f021d1b7f870aade12");
 QString MyAccounts::decrPassword(QByteArray encr_password)
 {
     QByteArray plain_pass = p.Decrypt(encr_password,encr_decr_key);
@@ -262,7 +262,6 @@ void MyAccounts::on_tableView_doubleClicked(const QModelIndex &index)
     QModelIndex mo;
     int row = 0;
     row = index.row();
-    qDebug()<<row<<"row";
     sel_password = index.sibling(row,1).data().toByteArray();
     qDebug()<<sel_password<<"show this";
 
@@ -273,7 +272,7 @@ void MyAccounts::on_tableView_doubleClicked(const QModelIndex &index)
 }
 void MyAccounts::showPass()
 {
-    ui->DecryptedPassword->setText(decrPassword(sel_password).toLatin1());
+    ui->DecryptedPassword->setText(decrPassword(QByteArray::fromHex(sel_password)));
 }
 void MyAccounts::hidePass()
 {

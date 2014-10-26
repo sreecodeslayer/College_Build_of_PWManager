@@ -30,8 +30,6 @@ public:
 
     QSqlDatabase db;
 
-    QString acc_password;
-
 private slots:    
     void on_Ok_Button_clicked();
 
@@ -39,7 +37,7 @@ private slots:
 
     void on_Cancel_Button_clicked();
 
-    QString encrPassword(QString);
+    QString encrPassword();
 
     QString decrPassword(QByteArray);
 

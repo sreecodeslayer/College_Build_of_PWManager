@@ -56,188 +56,6 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>21</y>
-      <width>231</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_4">
-           <property name="text">
-            <string>A/C type:</string>
-           </property>
-           <property name="buddy">
-            <cstring>account_type_list</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="account_type_list">
-           <property name="acceptDrops">
-            <bool>true</bool>
-           </property>
-           <property name="verticalScrollBarPolicy">
-            <enum>Qt::ScrollBarAsNeeded</enum>
-           </property>
-           <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustToContents</enum>
-           </property>
-           <property name="alternatingRowColors">
-            <bool>true</bool>
-           </property>
-           <property name="movement">
-            <enum>QListView::Static</enum>
-           </property>
-           <property name="isWrapping" stdset="0">
-            <bool>false</bool>
-           </property>
-           <property name="resizeMode">
-            <enum>QListView::Fixed</enum>
-           </property>
-           <property name="viewMode">
-            <enum>QListView::ListMode</enum>
-           </property>
-           <property name="uniformItemSizes">
-            <bool>true</bool>
-           </property>
-           <property name="sortingEnabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>Social Network</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Bank</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>E-Mails</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Webpages</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Online Shopping</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Office</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Education</string>
-            </property>
-            <property name="icon">
-             <iconset resource="Resources.qrc">
-              <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Username:</string>
-             </property>
-             <property name="buddy">
-              <cstring>add_username</cstring>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Password:</string>
-             </property>
-             <property name="buddy">
-              <cstring>add_password</cstring>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>Link:</string>
-             </property>
-             <property name="buddy">
-              <cstring>add_link</cstring>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
-            <widget class="QLineEdit" name="add_username"/>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="add_password">
-             <property name="echoMode">
-              <enum>QLineEdit::Password</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="add_link"/>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
       <x>80</x>
       <y>230</y>
       <width>158</width>
@@ -261,12 +79,206 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>15</y>
+      <width>231</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>A/C type:</string>
+         </property>
+         <property name="buddy">
+          <cstring>account_type_list</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="account_type_list">
+         <property name="acceptDrops">
+          <bool>true</bool>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAsNeeded</enum>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContents</enum>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="movement">
+          <enum>QListView::Static</enum>
+         </property>
+         <property name="isWrapping" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="resizeMode">
+          <enum>QListView::Fixed</enum>
+         </property>
+         <property name="viewMode">
+          <enum>QListView::ListMode</enum>
+         </property>
+         <property name="uniformItemSizes">
+          <bool>true</bool>
+         </property>
+         <property name="sortingEnabled">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>Social Network</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bank</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E-Mails</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Webpages</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Online Shopping</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Office</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Education</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Resources.qrc">
+            <normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</normaloff>:/new/prefix1/Resources/Bg-Images/list-tree-50p.png</iconset>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Username:</string>
+           </property>
+           <property name="buddy">
+            <cstring>add_username</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Password:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Link:</string>
+           </property>
+           <property name="buddy">
+            <cstring>add_link</cstring>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="add_username">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="add_password">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="add_link">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <tabstops>
   <tabstop>account_type_list</tabstop>
   <tabstop>add_username</tabstop>
-  <tabstop>add_password</tabstop>
   <tabstop>add_link</tabstop>
  </tabstops>
  <resources>
