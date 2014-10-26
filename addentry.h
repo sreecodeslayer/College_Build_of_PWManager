@@ -20,7 +20,8 @@ class AddEntry : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddEntry(QWidget *parent = 0);
+    int current_user_id;
+    explicit AddEntry(QWidget *parent = 0,int current_user=0);
 
     QString decrypt(const QString&);
 

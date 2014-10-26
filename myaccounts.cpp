@@ -14,14 +14,15 @@
 #include <QByteArray>
 #include <QTimer>
 
-MyAccounts::MyAccounts(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MyAccounts)
+MyAccounts::MyAccounts(QWidget *parent,int current_user) :QMainWindow(parent),ui(new Ui::MyAccounts)
 {
     ui->setupUi(this);
     createConnection();
     ui->view_password->setText("<font color = blue size = 2>Double click field to see the actuall password!</font>");
     populateTable();
+    current_user_id=current_user;
+    QMessageBox::information(0, "Connection Failed!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
+
 }
 
 MyAccounts::~MyAccounts()
@@ -78,7 +79,7 @@ void MyAccounts::populateTable()
 
 void MyAccounts::on_action_New_triggered()
 {
-    AddEntry *new_entry = new AddEntry;
+    AddEntry *new_entry = new AddEntry(this,current_user_id);
     new_entry->show();
     this->hide();
 

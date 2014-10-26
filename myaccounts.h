@@ -14,7 +14,8 @@ class MyAccounts : public QMainWindow
     QSqlDatabase db;
 
 public:
-    explicit MyAccounts(QWidget *parent = 0);
+    int current_user_id;
+    explicit MyAccounts(QWidget *parent = 0,int current_user=1);
     ~MyAccounts();
 private slots:
     void populateTable();

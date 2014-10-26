@@ -78,7 +78,8 @@ void Dialog::on_LogInButton_clicked()
 
                 qDebug()<<"Now open next ui!";
                 this->hide();
-                MyAccounts *main_ui = new MyAccounts;
+                int current_user_id=5; //to be determined
+                MyAccounts *main_ui = new MyAccounts(this,current_user_id);
                 main_ui->show();
                 break;
 

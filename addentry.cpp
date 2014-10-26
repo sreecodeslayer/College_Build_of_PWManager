@@ -11,13 +11,17 @@
 #include <QMessageBox>
 #include "myaccounts.h"
 
-AddEntry::AddEntry(QWidget *parent) :
+AddEntry::AddEntry(QWidget *parent,int current_user) :
     QDialog(parent),
     ui(new Ui::AddEntry)
 {
     ui->setupUi(this);
     this->setWindowTitle("Add Entry");
     createConnection();
+     //int current_user_id=0;
+     current_user_id=current_user;
+     QMessageBox::information(0, "Connection Failed!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
+
 }
 
 AddEntry::~AddEntry()
@@ -53,11 +57,11 @@ void AddEntry::on_Ok_Button_clicked()
 
     QString enc_pas = encrPassword();
     QSqlQuery qry(db);
-    qry.prepare("INSERT INTO useraccount (Username,Password,Link,AccType) VALUES(:usr,:pass,:l,:acc)");
+    qry.prepare("INSERT INTO useraccount (Username,Password,Link,AccType,M_ID) VALUES(:usr,:pass,:l,:acc,:mid)");
     qry.bindValue(":usr",acc_username);
     qry.bindValue(":pass",enc_pas); //----> encryptPassword(acc_password)
     qry.bindValue(":l",acc_link);
-    //qry.bindValue(":m","o1");
+    qry.bindValue(":mid",current_user_id);
     qry.bindValue(":acc",listitem);
     qry.exec();
     MyAccounts *goback = new MyAccounts;

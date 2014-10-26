@@ -21,6 +21,7 @@ NewAccount::NewAccount(QWidget *parent) :
     ui(new Ui::NewAccount)
 {
     ui->setupUi(this);
+
 }
 
 NewAccount::~NewAccount()
