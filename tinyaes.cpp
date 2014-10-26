@@ -94,6 +94,7 @@ QByteArray TinyAES::Encrypt(QByteArray p_input, QByteArray p_key, QByteArray p_i
     QByteArrayToUCharArray(input, decrypted);
 
     unsigned char encrypted[inputSize]; // encrypted text
+    qDebug()<< encrypted[inputSize]<<"In ecn tinaes";
 
     aes_context context;
     aes_set_key(key, keySize * 8, &context);

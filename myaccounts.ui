@@ -67,6 +67,23 @@
      <property name="text">
       <string>All Accounts</string>
      </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="icon">
+      <iconset resource="Resources.qrc">
+       <normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</normaloff>:/new/prefix1/Resources/Bg-Images/account_and_control.png</iconset>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Online Shopping</string>
+     </property>
      <property name="font">
       <font>
        <pointsize>7</pointsize>
@@ -80,6 +97,9 @@
     <item>
      <property name="text">
       <string>Social Networks</string>
+     </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
      </property>
      <property name="font">
       <font>
@@ -104,6 +124,9 @@
      <property name="text">
       <string>E-Mails</string>
      </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
+     </property>
      <property name="font">
       <font>
        <pointsize>7</pointsize>
@@ -117,6 +140,9 @@
     <item>
      <property name="text">
       <string>Bank</string>
+     </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
      </property>
      <property name="font">
       <font>
@@ -132,6 +158,9 @@
      <property name="text">
       <string>Office</string>
      </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
+     </property>
      <property name="font">
       <font>
        <pointsize>7</pointsize>
@@ -145,6 +174,9 @@
     <item>
      <property name="text">
       <string>Education</string>
+     </property>
+     <property name="toolTip">
+      <string>Select the account type</string>
      </property>
      <property name="font">
       <font>
@@ -194,19 +226,6 @@
      <bool>true</bool>
     </attribute>
    </widget>
-   <widget class="QLabel" name="StatusbarLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>380</y>
-      <width>391</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="AddEntryButton">
     <property name="geometry">
      <rect>
@@ -244,6 +263,32 @@
     </property>
     <property name="text">
      <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="view_password">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>201</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="DecryptedPassword">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>390</y>
+      <width>201</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

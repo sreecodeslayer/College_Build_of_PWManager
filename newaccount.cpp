@@ -73,20 +73,26 @@ void NewAccount::on_RegisterButton_clicked()
            Reg_query.bindValue(":username",New_username);
            Reg_query.bindValue(":password",hash_key_result);
            Reg_query.exec();
-
-           QMessageBox::information(this,"", Reg_query.lastError().text());
-
-           QMessageBox::StandardButton registered;
-           registered = QMessageBox::information(this,"Successfull Register","Your account has been registered!<br>Please log in to continue!");
-           if(registered)
+           if(!Reg_query.exec())
            {
-               Dialog *s = new Dialog;
-               s->show();
-               db.close();
-               close();
+               QMessageBox::information(this,"Error", Reg_query.lastError().text());
+           }
+           else
+           {
+               QMessageBox::StandardButton registered;
+               registered = QMessageBox::information(this,"Successfull Register","Your account has been registered!<br>Please log in to continue!");
+               if(registered)
+               {
+                   Dialog *s = new Dialog;
+                   s->show();
+                   db.close();
+                   close();
+               }
+
+               M_id++; // thought of unique ID this way, but resets when quitting :D
            }
 
-           M_id++; // thought of unique ID this way, but resets when quitting :D
+
 
        }
 }

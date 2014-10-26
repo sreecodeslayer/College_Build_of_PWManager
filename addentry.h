@@ -37,7 +37,7 @@ private slots:
 
     void on_Cancel_Button_clicked();
 
-    QString encrPassword(QString);
+    QString encrPassword();
 
     QString decrPassword(QByteArray);
 
