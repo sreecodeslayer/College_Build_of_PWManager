@@ -21,7 +21,7 @@ MyAccounts::MyAccounts(QWidget *parent,int current_user) :QMainWindow(parent),ui
     ui->view_password->setText("<font color = blue size = 2>Double click field to see the actuall password!</font>");
     populateTable();
     current_user_id=current_user;
-    QMessageBox::information(0, "Connection Failed!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
+    QMessageBox::information(0, "Current user!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
 
 }
 

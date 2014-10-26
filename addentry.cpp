@@ -20,7 +20,7 @@ AddEntry::AddEntry(QWidget *parent,int current_user) :
     createConnection();
      //int current_user_id=0;
      current_user_id=current_user;
-     QMessageBox::information(0, "Connection Failed!", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
+     QMessageBox::information(0, "Cuurent User", QString::number( current_user_id),QMessageBox::Ok, QMessageBox::NoButton);
 
 }
 
@@ -64,7 +64,7 @@ void AddEntry::on_Ok_Button_clicked()
     qry.bindValue(":mid",current_user_id);
     qry.bindValue(":acc",listitem);
     qry.exec();
-    MyAccounts *goback = new MyAccounts;
+    MyAccounts *goback = new MyAccounts(this,current_user_id);
     goback->show();
     close();
 }
