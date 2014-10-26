@@ -64,21 +64,21 @@ void Dialog::on_LogInButton_clicked()
         qDebug()<< "Dialog-, log in button clicked" + hash_key_result;
 
         QSqlQuery Log_in_query(db);
-        QString output_hashedpassword,output_username, query = "SELECT Username,MasterPassword FROM pwmanager";
+        QString output_hashedpassword,output_username, query = "SELECT Username,MasterPassword,M_ID FROM pwmanager";
 
         Log_in_query.exec(query);
         while(Log_in_query.next())
         {
             output_username = Log_in_query.value(0).toString();
             output_hashedpassword = Log_in_query.value(1).toString();
-
+            int current_user_id=Log_in_query.value(2).toString().toInt();
             if(output_hashedpassword == hash_str && output_username == username)
             {
                 ui->loginerror->setText("");
 
                 qDebug()<<"Now open next ui!";
                 this->hide();
-                int current_user_id=5; //to be determined
+                /*int current_user_id=5;*/ //to be determined
                 MyAccounts *main_ui = new MyAccounts(this,current_user_id);
                 main_ui->show();
                 break;
