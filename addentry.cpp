@@ -64,9 +64,10 @@ void AddEntry::on_Ok_Button_clicked()
     qry.bindValue(":mid",current_user_id);
     qry.bindValue(":acc",listitem);
     qry.exec();
+    qDebug()<<qry.lastError();
     MyAccounts *goback = new MyAccounts(this,current_user_id);
     goback->show();
-    close();
+    this->hide();
 }
 
 void AddEntry::on_account_type_list_itemClicked(QListWidgetItem *item)
