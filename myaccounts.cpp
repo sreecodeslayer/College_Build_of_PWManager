@@ -88,7 +88,9 @@ void MyAccounts::ShowContextMenu(const QPoint& pos) // this is a slot
    }
    if (action==remove)
    {
-       //ui->tableView->indexAt(pos).model()->removeRow();
+       //int rowCount = ui->tableView->rowCount();
+      //m_model->removeRows( 0, rowCount );
+       ui->tableView->model()->removeRow(ui->tableView->indexAt(pos).row());
    }
 }
 
